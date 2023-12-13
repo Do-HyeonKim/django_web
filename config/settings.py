@@ -18,12 +18,12 @@ env = environ.Env(
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# environ.Env.read_env(
-#     env_file= os.path.join(BASE_DIR,'.env')
-# )
-environ.Env.read_env()
+BASE_DIR = Path(__file__).resolve().parent
+print(BASE_DIR)
+environ.Env.read_env(
+    env_file= os.path.join(BASE_DIR,'.env')
+)
+# environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
